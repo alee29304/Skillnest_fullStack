@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <div class="titulo">
+                <img class="pokeball" src="{{ url_for('static', filename='img/pokeball.png') }}" width="30px"
+                    alt="pokeball">
+                <h1>Pokédex</h1>
+            </div>
+            <div>
+                <p>Todos los Pokémon</p>
+            </div>
+            <div class="botones">
+                <button class="btn btn-primary">
+                    <i class="bi bi-list"></i>
+                    Ver todos
+                </button>
+
+                <button class="btn btn-success">
+                    <i class="bi bi-funnel-fill"></i>
+                    Ver 5 primeros
+                </button>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="card">
+
+        <div class="card-top">
+            <span class="id">#1</span>
+            <img src="{{ url_for('static', filename='img/bulbasaur.png') }}" width="120px" alt="Bulbasaur">
+        </div>
+
+        <div class="card-body">
+            <h3>Bulbasaur</h3>
+
+            <div class="tipos">
+                <span class="planta">Planta</span>
+                <span class="veneno">Veneno</span>
+            </div>
+
+            <p class="texto">Poder</p>
+            <div class="barra">
+                <div class="progreso"></div>
+            </div>
+
+            <div class="datos">
+                <div>
+                    <small>Altura</small>
+                    <p><strong>0.7m</strong></p>
+                </div>
+
+                <div>
+                    <small>Peso</small>
+                    <p><strong>6.9kg</strong></p>
+                </div>
+            </div>
+
+            <button>Ver detalles</button>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

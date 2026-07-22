@@ -1,0 +1,90 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.titulo {
+
+}
+
+
+.card{
+    width:340px;
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,.15);
+    text-align:center;
+}
+
+.card-top{
+    background:#dfe8f5;
+    padding:20px;
+    position:relative;
+}
+
+.card-top img{
+    width:120px;
+}
+
+.id{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:#555;
+    color:#fff;
+    padding:3px 8px;
+    border-radius:15px;
+    font-size:12px;
+}
+
+.card-body{
+    padding:20px;
+}
+
+.tipos span{
+    color:#fff;
+    padding:4px 10px;
+    border-radius:10px;
+    font-size:12px;
+    margin:0 3px;
+}
+
+.planta{background:#6cc24a;}
+.veneno{background:#a040a0;}
+
+.texto{
+    text-align:left;
+    font-size:13px;
+    margin-top:15px;
+}
+
+.barra{
+    height:8px;
+    background:#eee;
+    border-radius:5px;
+}
+
+.progreso{
+    width:45%;
+    height:100%;
+    background:#3b5bdb;
+    border-radius:5px;
+}
+
+.datos{
+    display:flex;
+    justify-content:space-around;
+    margin:20px 0;
+}
+
+button{
+    width:100%;
+    padding:8px;
+    border:1px solid #4a90ff;
+    background:#fff;
+    color:#4a90ff;
+    border-radius:5px;
+    cursor:pointer;
+}
