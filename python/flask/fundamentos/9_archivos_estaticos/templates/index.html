@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Archivos Estáticos</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>🚀 Mi primera página con CSS y JavaScript</h1>
+
+    <img src="{{ url_for('static', filename='img/3eb.jpeg') }}"
+         alt="Logo Flask"
+         width="250">
+
+    <p>
+
+        Flask permite organizar correctamente nuestros recursos
+        utilizando la carpeta <strong>static</strong>.
+
+    </p>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
