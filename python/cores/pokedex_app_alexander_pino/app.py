@@ -21,25 +21,33 @@ pokedex = [
 @app.route("/")
 def todos():
 
-    return render_template("pokemon.html")
+    return render_template("pokemon.html", pokedex=pokedex)
 
 # Ruta para mostrar un Pokémon por nombre
 @app.route("/pokemon/<nombre>")
 def name(nombre):
 
-    return render_template("pokemon.html")
+    for pokemon in pokedex:
+        if pokemon["nombre"].lower() == nombre.lower():
+            return render_template("pokemon.html", pokedex=[pokemon])
+
+    return pokemon_no_encontrado("Pokémon no encontrado.")
 
 # Ruta para mostrar un Pokémon por número en la Pokédex
-@app.route("/pokemon/<int:numero>")
+@app.route("/pokemon/id/<int:numero>")
 def num(numero):
 
-    return render_template("pokemon.html")
+    for pokemon in pokedex:
+        if pokemon["id"] == numero:
+            return render_template("pokemon.html", pokedex=[pokemon])
+
+    return pokemon_no_encontrado("Pokémon no encontrado.")
 
 # Ruta para mostrar una cantidad específica de Pokémon
-@app.route("/pokemon/<int:cantidad>")
+@app.route("/pokemon/cantidad/<int:cantidad>")
 def especifica(cantidad):
 
-    return render_template("pokemon.html")
+    return render_template("pokemon.html", pokedex=pokedex[:cantidad])
 
 # Error cuando no se encuentra un Pokémon
 def pokemon_no_encontrado(mensaje: str):
@@ -47,4 +55,4 @@ def pokemon_no_encontrado(mensaje: str):
    return render_template("404.html", mensaje=mensaje)
 
 if __name__ == "__main__":
-   app.run(debug=True)
+   app.run(debug=True) 
