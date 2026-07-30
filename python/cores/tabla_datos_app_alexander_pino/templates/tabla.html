@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar en tablas</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+
+    <!-- Encabezado del sitio -->
+    <div class="container mt-5">
+        <h1 class="text-center text-primary fw-bold"><i class="bi bi-border-all"></i>
+            Plataformas Digitales
+        </h1>
+        <p class="text-center text-secondary">Visualización de datos de las principales plataformas digitales</p>
+
+        <!-- Estructura general -->
+        <div class="card p-4 shadow-sm mb-4">
+            <h5>
+                <i class="bi bi-funnel-fill"></i>
+                Filtros y Ordenamiento
+            </h5>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Filtrar por país:</label>
+                    <select class="form-select">
+                        <option>Todos los países</option>
+                        <option>EE.UU.</option>
+                        <option>Suecia</option>
+                        <option>China</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label>Ordenar por:</label>
+                    <select class="form-select">
+                        <option>Nombre</option>
+                        <option>Usuarios</option>
+                        <option>Año</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label>Dirección:</label>
+                    <select class="form-select">
+                        <option>Ascendente</option>
+                        <option>Descendente</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-hover align-middle">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Usuarios</th>
+                    <th>Año Fundación</th>
+                    <th>País</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+
+            {% for dato in datos %}
+            <tr>
+
+                <td>
+                    <img src="{{ url_for('static', filename='img/' + dato.logo) }}" class="logo">
+                    <strong>{{ dato.nombre }}</strong>
+                </td>
+
+                <td>
+                    <span class="badge bg-primary">{{ dato.usuarios }}</span>
+                </td>
+
+                <td>{{ dato.fundado }}</td>
+
+                <td>
+                    <span class="badge bg-secondary">{{ dato.pais }}</span>
+                </td>
+
+                <td>
+                    <button class="btn btn-info btn-sm">i</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p class="text-end text-secondary">
+            Mostrando {{ datos|length }} plataformas
+        </p>
+    </div>
+
+    <footer>
+        <p class="l1">Visualización de datos desarrollada con Flask y Bootstrap.</p>
+        <p class="l2">Los datos mostrados son ficticios para fines educativos.</p>
+    </footer>
+
+</body>
+
+</html>
