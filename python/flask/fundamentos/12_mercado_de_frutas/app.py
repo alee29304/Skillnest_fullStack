@@ -1,87 +1,138 @@
-# ==========================================
-# Importaciones
-# ==========================================
+# ==========================================================
+# MERCADO DE FRUTAS
+# Aplicación web desarrollada con Flask
+# ==========================================================
+
+
+# ----------------------------------------------------------
+# IMPORTACIONES
+# ----------------------------------------------------------
 
 from flask import Flask, render_template, request
 
-# ==========================================
-# Crear aplicación Flask
-# ==========================================
+
+# ----------------------------------------------------------
+# CREACIÓN DE LA APLICACIÓN
+# ----------------------------------------------------------
 
 app = Flask(__name__)
 
-# ==========================================
-# Base de datos ficticia
-# ==========================================
+
+# ----------------------------------------------------------
+# DATOS DE LAS FRUTAS
+# ----------------------------------------------------------
+#
+# Por ahora utilizamos una lista de diccionarios.
+#
+# Cada diccionario representa una fruta.
+#
+# En una aplicación real estos datos podrían almacenarse
+# posteriormente en una base de datos.
+# ----------------------------------------------------------
 
 frutas = [
 
     {
+        "id": "manzana",
         "nombre": "Manzana",
         "precio": 2.5,
         "imagen": "manzana.png",
-        "descripcion": "Fruta dulce y crujiente, rica en fibra y vitamina C."
+        "descripcion": (
+            "Fruta dulce y crujiente, "
+            "rica en fibra y vitamina C."
+        )
     },
 
     {
+        "id": "platano",
         "nombre": "Plátano",
         "precio": 1.8,
         "imagen": "platano.png",
-        "descripcion": "Fruta energética rica en potasio, perfecta para deportistas."
+        "descripcion": (
+            "Fruta energética rica en potasio, "
+            "perfecta para deportistas."
+        )
     },
 
     {
+        "id": "naranja",
         "nombre": "Naranja",
         "precio": 3.0,
         "imagen": "naranja.png",
-        "descripcion": "Cítrico jugoso con alto contenido de vitamina C y antioxidantes."
+        "descripcion": (
+            "Cítrico jugoso con alto contenido "
+            "de vitamina C y antioxidantes."
+        )
     },
 
     {
-        "nombre": "Frutilla",
+        "id": "fresa",
+        "nombre": "Fresa",
         "precio": 4.5,
         "imagen": "frutilla.png",
-        "descripcion": "Baya dulce y aromática, rica en antioxidantes y vitamina C."
+        "descripcion": (
+            "Baya dulce y aromática, rica "
+            "en antioxidantes y vitamina C."
+        )
     },
 
     {
+        "id": "uva",
         "nombre": "Uva",
         "precio": 3.8,
         "imagen": "uva.png",
-        "descripcion": "Fruta pequeña y dulce, ideal para snacks y postres."
+        "descripcion": (
+            "Fruta pequeña y dulce, ideal "
+            "para snacks y postres."
+        )
     },
 
     {
+        "id": "pina",
         "nombre": "Piña",
         "precio": 5.0,
         "imagen": "pina.png",
-        "descripcion": "Fruta tropical dulce y ácida, con propiedades antiinflamatorias."
+        "descripcion": (
+            "Fruta tropical dulce y ácida, "
+            "ideal para consumir fresca."
+        )
     },
 
     {
+        "id": "sandia",
         "nombre": "Sandía",
         "precio": 4.2,
         "imagen": "sandia.png",
-        "descripcion": "Fruta refrescante, compuesta en un 90% de agua, ideal para el verano."
+        "descripcion": (
+            "Fruta refrescante, ideal "
+            "para los días de verano."
+        )
     },
 
     {
+        "id": "mango",
         "nombre": "Mango",
         "precio": 3.5,
         "imagen": "mango.png",
-        "descripcion": "Fruta tropical dulce y aromática, rica en vitaminas A y C."
+        "descripcion": (
+            "Fruta tropical dulce y aromática, "
+            "rica en vitaminas A y C."
+        )
     }
 
 ]
 
-# ==========================================
-# Ruta principal
-# ==========================================
+
+# ----------------------------------------------------------
+# RUTA PRINCIPAL
+# ----------------------------------------------------------
 
 @app.route("/")
 def index():
     """
-    Muestra la página principal del mercado.
+    Muestra la página principal.
+
+    Envía la lista de frutas hacia index.html.
     """
 
     return render_template(
@@ -90,12 +141,15 @@ def index():
     )
 
 
-# ==========================================
-# Catálogo de frutas
-# ==========================================
+# ----------------------------------------------------------
+# RUTA DEL CATÁLOGO
+# ----------------------------------------------------------
 
 @app.route("/frutas")
 def catalogo():
+    """
+    Muestra el catálogo de frutas.
+    """
 
     return render_template(
         "frutas.html",
@@ -103,16 +157,22 @@ def catalogo():
     )
 
 
-# ==========================================
-# Procesar compra
-# ==========================================
+# ----------------------------------------------------------
+# RUTA PARA PROCESAR LA ORDEN
+# ----------------------------------------------------------
 
 @app.route("/checkout", methods=["POST"])
 def checkout():
+    """
+    Recibe los datos enviados desde el formulario.
 
-    # ----------------------------
-    # Información del cliente
-    # ----------------------------
+    Esta ruta utiliza POST porque el usuario
+    está enviando información al servidor.
+    """
+
+    # ------------------------------------------------------
+    # DATOS DEL CLIENTE
+    # ------------------------------------------------------
 
     nombre = request.form["nombre"]
 
@@ -121,9 +181,9 @@ def checkout():
     direccion = request.form["direccion"]
 
 
-    # ----------------------------
-    # Variables auxiliares
-    # ----------------------------
+    # ------------------------------------------------------
+    # VARIABLES PARA CONSTRUIR EL PEDIDO
+    # ------------------------------------------------------
 
     pedido = []
 
@@ -132,17 +192,34 @@ def checkout():
     total_frutas = 0
 
 
-    # ----------------------------
-    # Recorrer todas las frutas
-    # ----------------------------
+    # ------------------------------------------------------
+    # RECORRER LAS FRUTAS
+    # ------------------------------------------------------
 
     for fruta in frutas:
 
-        cantidad = int(request.form[fruta["nombre"]])
+        # Los datos provenientes de un formulario
+        # llegan como cadenas de texto.
+        #
+        # Por eso convertimos la cantidad a entero.
+
+        cantidad = int(
+            request.form[fruta["id"]]
+        )
+
+
+        # --------------------------------------------------
+        # VERIFICAR SI LA FRUTA FUE SELECCIONADA
+        # --------------------------------------------------
 
         if cantidad > 0:
 
+            # Calcular subtotal de la fruta.
+
             subtotal = cantidad * fruta["precio"]
+
+
+            # Agregar la fruta al pedido.
 
             pedido.append({
 
@@ -158,14 +235,20 @@ def checkout():
 
             })
 
+
+            # Acumular dinero.
+
             total += subtotal
+
+
+            # Acumular cantidad de frutas.
 
             total_frutas += cantidad
 
 
-    # ----------------------------
-    # Mostrar resumen
-    # ----------------------------
+    # ------------------------------------------------------
+    # ENVIAR INFORMACIÓN AL CHECKOUT
+    # ------------------------------------------------------
 
     return render_template(
 
@@ -186,9 +269,9 @@ def checkout():
     )
 
 
-# ==========================================
-# Ejecutar servidor
-# ==========================================
+# ----------------------------------------------------------
+# EJECUTAR SERVIDOR
+# ----------------------------------------------------------
 
 if __name__ == "__main__":
 
