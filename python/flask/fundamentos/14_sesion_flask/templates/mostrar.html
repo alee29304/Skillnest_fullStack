@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Usuario</title>
+
+</head>
+
+<body>
+
+    <h1>Usuario registrado</h1>
+
+    <hr>
+
+    <!--
+        Podemos acceder directamente
+        a la sesión desde Jinja2.
+    -->
+
+    <h3>
+
+        Nombre:
+
+        {{ session["nombre_usuario"] }}
+
+    </h3>
+
+
+    <h3>
+
+        E-mail:
+
+        {{ session["email_usuario"] }}
+
+    </h3>
+
+
+    <hr>
+
+    <a href="{{ url_for('index') }}">
+
+        Volver al formulario
+
+    </a>
+
+</body>
+
+</html>
