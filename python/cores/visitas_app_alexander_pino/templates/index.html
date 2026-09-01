@@ -4,34 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantidad de visitas</title>
+    <meta name="author" content="alexanderpino@liceovvh.cl">
+    <title>Contador de Visitas</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
+    <div class="container">
+        <div class="visitas-card">
+            <div class="icono">
+                <i class="bi bi-eye-fill"></i>
+            </div>
 
-    <h1>Contador de visitas</h1>
+            <h1>Contador de Visitas</h1>
+            <p class="descripcion">Seguimiento de visitas mediante sesiones de Flask.</p>
 
-    <p>Has visitado esta página {{ visitas }} veces.</p>
+            <!-- CONTADOR -->
+            <div class="contador">
+                <span>{{ visitas }}</span>
+            </div>
 
-    <a href="/sumar_dos">
-        <button>+2 visitas</button>
-    </a>
+            <p class="texto-visitas">
+                {% if visitas == 1 %}
+                Has visitado esta página 1 vez.
+                {% else %}
+                Has visitado esta página {{ visitas }} veces.
+                {% endif %}
+            </p>
 
-    <a href="/reiniciar">
-        <button>Reiniciar</button>
-    </a>
+            <!-- BOTONES -->
+            <div class="acciones">
+                <a href="{{ url_for('sumar_dos') }}" class="btn btn-success">
+                    Sumar +2
+                </a>
+                <a href="{{ url_for('reiniciar') }}" class="btn btn-warning">
+                    Reiniciar
+                </a>
+            </div>
 
-    <form action="/sumar" method="POST">
-        <input type="number" name="numero" required>
-        <button type="submit">Agregar</button>
-    </form>
+            <!-- FORMULARIO PERSONALIZADO -->
+            <div class="formulario">
+                <h3>Agregar visitas</h3>
+                <form action="{{ url_for('sumar') }}" method="POST">
+                    <div class="input-group">
+                        <input type="number" name="cantidad" min="1" class="form-control"
+                            placeholder="Ingresa una cantidad..." required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-plus-lg"></i> Agregar
+                        </button>
+                    </div>
+                </form>
+            </div>
 
-    <p>El contador ha sido reiniciado {{ reinicios }} veces.</p>
+            <!-- REINICIOS -->
+            <div class="reinicios">
+                <i class="bi bi-arrow-repeat"></i> Contador reiniciado: <strong>{{ reinicios }}</strong> veces.
+            </div>
 
-    <a href="/destruir_sesion">
-        <button>Destruir sesión</button>
-    </a>
-
+            <!-- DESTRUIR SESIÓN -->
+            <div class="destruir">
+                <a href="{{ url_for('destruir_sesion') }}" class="btn btn-outline-danger">
+                    <i class="bi bi-trash3-fill"></i> Destruir sesión
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
