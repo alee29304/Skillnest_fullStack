@@ -1,0 +1,340 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: #161225;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+/* Fondo de Estrellas y Puntos */
+.stars-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.25) 1.5px, transparent 1.5px),
+        radial-gradient(rgba(255, 255, 255, 0.15) 3px, transparent 3px);
+    background-size: 60px 60px, 120px 120px;
+    background-position: 0 0, 30px 30px;
+    z-index: -1;
+}
+
+/* Contenedor Principal */
+.main-wrapper {
+    width: 100%;
+    max-width: 440px;
+}
+
+.card-container {
+    background: linear-gradient(180deg, #1d1733 0%, #151126 100%);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(231, 178, 178, 0.6), 0 0 20px rgba(112, 0, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+/* Encabezado */
+.header-section {
+    padding: 35px 25px 20px 25px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+}
+
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto;
+    font-size: 26px;
+    color: #ffffff;
+}
+
+.moon-icon {
+    background: linear-gradient(135deg, #2d64ca, #2140a5);
+    box-shadow: 0 0 20px rgba(40, 86, 212, 0.5);
+}
+
+.sun-icon {
+    background: linear-gradient(135deg, #cab604, #cab604);
+    box-shadow: 0 0 20px rgba(255, 153, 0, 0.5);
+}
+
+.main-title {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 0.88rem;
+    color: #a0a0c0;
+    font-weight: 400;
+}
+
+/* Formulario */
+.form-body {
+    padding: 10px 28px 30px 28px;
+}
+
+.field-container {
+    margin-bottom: 18px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.field-icon {
+    position: absolute;
+    left: 16px;
+    color: #4b5563;
+    font-size: 1rem;
+    z-index: 1;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.92rem;
+    color: #0f172a;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: #1e293b;
+    font-size: 0.9rem;
+}
+
+.input-wrapper input:focus {
+    background-color: #ffffff;
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+.field-hint {
+    display: block;
+    font-size: 0.72rem;
+    color: #8b8ba7;
+    margin-top: 5px;
+    margin-left: 4px;
+}
+
+/* Bola de Cristal Decorativa */
+.orb-container {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0 20px 0;
+}
+
+.crystal-orb {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #a78bfa 40%, #5b21b6 80%, #2e1065 100%);
+    box-shadow: 0 0 30px rgba(167, 139, 250, 0.4), inset -5px -5px 15px rgba(0, 0, 0, 0.4);
+    animation: pulseOrb 4s infinite ease-in-out;
+}
+
+@keyframes pulseOrb {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+        filter: brightness(1.15);
+    }
+}
+
+/* Botones */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #1a7c80 0%, #2745ca 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.35);
+    transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.5);
+}
+
+/* Pagina de Resultados (/futuro) */
+.results-body {
+    padding: 10px 24px 28px 24px;
+    background-color: #f8fafc;
+    color: #1e293b;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+/* Caja de Predicción */
+.prediction-box {
+    background-color: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    border-left: 4px solid #157a19;
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.star-badge {
+    color: #4caf50;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.prediction-text {
+    font-size: 0.93rem;
+    color: #1b5e20;
+    line-height: 1.45;
+    font-weight: 500;
+}
+
+/* Grid de Información */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.info-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f1f5f9;
+}
+
+.info-card-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.text-purple {
+    color: #7755b3;
+}
+
+.color-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.info-card-text {
+    font-size: 0.78rem;
+    color: #475569;
+    line-height: 1.35;
+}
+
+.animal-detail {
+    margin-top: 15px;
+}
+
+/* Número de la Suerte */
+.lucky-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.lucky-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #6b21a8;
+    margin-bottom: 12px;
+}
+
+.lucky-badge {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #7c3aed;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px auto;
+    font-size: 1.4rem;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.lucky-subtext {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+/* Banner de Edad */
+.age-banner {
+    background-color: #ffffff;
+    border-left: 3px solid #7c3aed;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 22px;
+    font-size: 0.82rem;
+    color: #334155;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.refresh-btn {
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.footer-text {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin-top: 18px;
+}

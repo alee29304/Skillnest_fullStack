@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Destino Revelado</title>
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Fondo decorativo estrellado -->
+    <div class="stars-bg"></div>
+
+    <div class="main-wrapper">
+        <div class="card-container result-card">
+            <!-- Header con icono de sol/estrella -->
+            <div class="header-section">
+                <div class="icon-circle sun-icon">
+                    <i class="fa-solid fa-sun"></i>
+                </div>
+                <h1 class="main-title">Tu Destino ha sido Revelado</h1>
+                <p class="subtitle">Las estrellas han hablado, {{ nombre }}</p>
+            </div>
+
+            <div class="results-body">
+                <!-- Caja verde de predicción -->
+                <div class="prediction-box">
+                    <div class="star-badge">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="prediction-text">{{ prediccion }}</p>
+                </div>
+
+                <!-- Grid de detalles: Color y Animal -->
+                <div class="info-grid">
+                    <!-- Tarjeta de Color -->
+                    <div class="info-card">
+                        <div class="info-card-title">
+                            <i class="fa-solid fa-palette text-purple"></i> Tu Color
+                        </div>
+                        <div class="color-dot" style="--bg: {{ color }}; background-color: var(--bg);"></div>
+                        <p class="info-card-text">
+                            Tu preferencia por el color <strong>{{ color }}</strong> revela tu afinidad con el
+                            <strong>misterio y descubrimiento</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta de Animal -->
+                    <div class="info-card">
+                        <div class="info-card-title">
+                            <i class="fa-solid fa-paw text-purple"></i> Tu Animal
+                        </div>
+                        <p class="info-card-text animal-detail">
+                            Tu conexión con el <strong>{{ animal }}</strong> simboliza tu naturaleza de
+                            <strong>independencia y misterio</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Número de la suerte -->
+                <div class="lucky-section">
+                    <h3 class="lucky-title">Tu número de la suerte</h3>
+                    <div class="lucky-badge">
+                        <span>{{ numero_suerte }}</span>
+                    </div>
+                    <p class="lucky-subtext">Este número te acompañará en momentos importantes.</p>
+                </div>
+
+                <!-- Caja de edad -->
+                <div class="age-banner">
+                    <p>A tus <strong>{{ edad }} años</strong>, estás en un momento favorable para aprovechar nuevas
+                        oportunidades.</p>
+                </div>
+
+                <!-- Botón de regresar -->
+                <a href="{{ url_for('index') }}" class="submit-btn refresh-btn">
+                    <i class="fa-solid fa-rotate-right"></i> Consultar de nuevo
+                </a>
+
+                <p class="footer-text">Las estrellas te han hablado hoy: {{ nombre }}.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
