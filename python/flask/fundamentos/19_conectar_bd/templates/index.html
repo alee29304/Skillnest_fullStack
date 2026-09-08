@@ -13,61 +13,43 @@
 
 <body>
 
-    <h1>Las mascotas</h1>
+    <h1>Listado de Mascotas</h1>
 
 
-    <!-- ==================================================
-         COMPROBAR SI EXISTEN MASCOTAS
-    =================================================== -->
+    {% if mascotas %}
 
-    {% if todas_mascotas %}
+    <ul>
 
+        {% for mascota in mascotas %}
 
-    <!-- ==================================================
-             RECORRER MASCOTAS
-        =================================================== -->
+        <li>
 
-    {% for una_mascota in todas_mascotas %}
+            <strong>
+                {{ mascota.nombre }}
+            </strong>
 
-    <div>
+            -
 
-        <p>
+            {{ mascota.tipo }}
 
-            <b>Nombre:</b>
-            {{ una_mascota.nombre }}
+            -
 
-            <br>
+            {{ mascota.color }}
 
-            <b>Tipo:</b>
-            {{ una_mascota.tipo }}
+        </li>
 
-            <br>
+        {% endfor %}
 
-            <b>Color:</b>
-            {{ una_mascota.color }}
-
-        </p>
-
-    </div>
-
-    {% endfor %}
-
+    </ul>
 
     {% else %}
 
-
-    <!-- ==================================================
-             SIN REGISTROS
-        =================================================== -->
-
     <p>
-
         No existen mascotas registradas.
-
     </p>
 
-
     {% endif %}
+
 
 </body>
 

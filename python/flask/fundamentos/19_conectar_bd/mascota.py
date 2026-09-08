@@ -1,6 +1,15 @@
 # ==========================================================
 # MODELO MASCOTA
 # ==========================================================
+#
+# Este archivo representa la tabla "mascotas"
+# mediante una clase de Python.
+#
+# ==========================================================
+
+
+# Importamos la función encargada de crear
+# una conexión con MySQL.
 
 from mysqlconnection import connectToMySQL
 
@@ -17,7 +26,7 @@ class Mascota:
     def __init__(self, data):
         """
         Recibe un diccionario proveniente de MySQL
-        y lo transforma en atributos del objeto.
+        y transforma sus datos en atributos del objeto.
         """
 
         self.id = data["id"]
@@ -47,7 +56,7 @@ class Mascota:
         """
 
         # --------------------------------------------------
-        # CONSULTA SQL
+        # Consulta SQL
         # --------------------------------------------------
 
         query = """
@@ -57,7 +66,7 @@ class Mascota:
 
 
         # --------------------------------------------------
-        # EJECUTAR CONSULTA
+        # Ejecutar consulta
         # --------------------------------------------------
 
         resultados = connectToMySQL(
@@ -66,14 +75,14 @@ class Mascota:
 
 
         # --------------------------------------------------
-        # CREAR LISTA DE OBJETOS
+        # Crear lista de objetos
         # --------------------------------------------------
 
         mascotas = []
 
 
         # --------------------------------------------------
-        # CONVERTIR RESULTADOS EN OBJETOS
+        # Convertir cada diccionario en Mascota
         # --------------------------------------------------
 
         for mascota in resultados:
@@ -84,7 +93,7 @@ class Mascota:
 
 
         # --------------------------------------------------
-        # RETORNAR RESULTADOS
+        # Retornar resultado
         # --------------------------------------------------
 
         return mascotas
