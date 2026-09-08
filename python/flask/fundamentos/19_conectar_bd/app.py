@@ -1,7 +1,6 @@
 # ==========================================================
-# SERVIDOR FLASK + MYSQL
+# SERVIDOR FLASK
 # ==========================================================
-
 
 from flask import Flask, render_template
 
@@ -22,31 +21,34 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     """
-    Consulta todas las mascotas de la base de datos
-    y las envía hacia la plantilla HTML.
+    Consulta todas las mascotas y las envía
+    hacia la plantilla index.html.
     """
 
     # ------------------------------------------------------
-    # Consultar base de datos mediante el modelo.
+    # OBTENER MASCOTAS DESDE MYSQL
     # ------------------------------------------------------
 
     mascotas = Mascota.get_all()
 
 
     # ------------------------------------------------------
-    # Mostrar resultados en la terminal.
+    # MOSTRAR RESULTADOS EN TERMINAL
     # ------------------------------------------------------
 
     print(mascotas)
 
 
     # ------------------------------------------------------
-    # Enviar resultados a Jinja2.
+    # ENVIAR DATOS A JINJA2
     # ------------------------------------------------------
 
     return render_template(
+
         "index.html",
-        mascotas=mascotas
+
+        todas_mascotas=mascotas
+
     )
 
 
