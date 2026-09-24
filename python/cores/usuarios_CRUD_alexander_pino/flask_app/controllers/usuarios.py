@@ -6,7 +6,6 @@ from flask_app.models.usuario import Usuario
 @app.route("/usuarios")
 def usuarios():
     lista_usuarios = Usuario.get_all()
-
     return render_template(
         "index.html",
         usuarios=lista_usuarios
@@ -14,12 +13,12 @@ def usuarios():
 
 
 @app.route("/usuarios/nuevo")
-def nuevo_usuario():
+def nuevo_usuarios():
     return render_template("nuevo.html")
 
 
 @app.route("/usuarios/crear", methods=["POST"])
-def crear_usuario():
+def usuario():
     data = {
         "nombre": request.form["nombre"].strip(),
         "apellido": request.form["apellido"].strip(),
@@ -46,7 +45,7 @@ def crear_usuario():
 
 
 @app.route("/usuarios/<int:id>")
-def detalles(id):
+def detalle(id):
     usuario = Usuario.get_by_id(id)
 
     if usuario is None:
@@ -59,7 +58,7 @@ def detalles(id):
 
 
 @app.route("/usuarios/editar/<int:id>")
-def editar_usuario(id):
+def editar(id):
     usuario = Usuario.get_by_id(id)
 
     if usuario is None:
@@ -72,7 +71,7 @@ def editar_usuario(id):
 
 
 @app.route("/usuarios/<int:id>/actualizar", methods=["POST"])
-def actualizar_usuario(id):
+def actualizar(id):
     data = {
         "id": id,
         "nombre": request.form["nombre"].strip(),
@@ -104,7 +103,7 @@ def actualizar_usuario(id):
 
 
 @app.route("/usuarios/eliminar/<int:id>")
-def eliminar_usuario(id):
+def borrar(id):
     data = {
         "id": id
     }
