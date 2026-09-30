@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}
+Cursos
+{% endblock %}
+
+{% block content %}
+
+<div class="row g-4">
+    <div class="col-lg-5">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+
+                <h1 class="h3 mb-4">
+                    Nuevo Curso
+                </h1>
+
+
+                <form action="{{ url_for('crear_curso') }}" method="POST">
+
+                    <div class="mb-3">
+
+                        <label for="nombre" class="form-label">
+                            Nombre
+                        </label>
+
+
+                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success">
+                        Crear
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==================================================
+         TODOS LOS CURSOS
+    =================================================== -->
+
+    <div class="col-lg-7">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+
+                <h2 class="h3 mb-4">
+                    Todos los Cursos
+                </h2>
+
+
+                {% if cursos %}
+
+                <div class="list-group">
+
+                    {% for curso in cursos %}
+
+                    <a href="{{ url_for(
+                                    'mostrar_curso',
+                                    id=curso.id
+                                ) }}" class="list-group-item list-group-item-action">
+
+                        {{ curso.nombre }}
+
+                    </a>
+
+                    {% endfor %}
+
+                </div>
+
+                {% else %}
+
+                <div class="alert alert-info">
+                    No existen cursos registrados.
+                </div>
+
+                {% endif %}
+
+
+                <div class="mt-4">
+
+                    <a href="{{ url_for('nuevo_estudiante') }}" class="btn btn-primary">
+                        Agregar Estudiante
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

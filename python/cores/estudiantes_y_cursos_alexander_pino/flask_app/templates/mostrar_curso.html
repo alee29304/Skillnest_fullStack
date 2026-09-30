@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ curso.nombre }}
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+
+        <h1 class="mb-1">
+            Estudiantes de {{ curso.nombre }}
+        </h1>
+
+        <p class="text-muted mb-0">
+            Estudiantes asociados al curso seleccionado.
+        </p>
+    </div>
+
+
+    <a href="{{ url_for('cursos') }}" class="btn btn-outline-primary">
+        Inicio
+    </a>
+</div>
+
+
+<div class="card shadow-sm">
+
+    <div class="card-body p-0">
+
+
+        {% if curso.estudiantes %}
+
+        <div class="table-responsive">
+
+            <table class="table table-striped table-hover mb-0">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>
+                            Nombre
+                        </th>
+
+                        <th>
+                            Apellido
+                        </th>
+
+                        <th>
+                            Edad
+                        </th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    {% for estudiante in curso.estudiantes %}
+
+                    <tr>
+
+                        <td>
+                            {{ estudiante.nombre }}
+                        </td>
+
+                        <td>
+                            {{ estudiante.apellido }}
+                        </td>
+
+                        <td>
+                            {{ estudiante.edad }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+
+        {% else %}
+
+        <div class="p-4">
+
+            <div class="alert alert-info mb-0">
+
+                Este curso todavía no tiene estudiantes.
+
+            </div>
+        </div>
+
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}
