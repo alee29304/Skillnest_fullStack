@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bienvenido</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+
+        <div class="card shadow mx-auto" style="max-width: 700px;">
+
+            <div class="card-body text-center">
+
+                <h1 class="mb-3">
+                    ¡Bienvenido, {{ usuario.nombre }}!
+                </h1>
+
+                <p class="text-muted">
+                    Has iniciado sesión correctamente.
+                </p>
+
+                <hr>
+
+                <h4 class="mb-4">Datos de tu cuenta</h4>
+
+                <div class="text-start">
+                    <p>
+                        <strong>Nombre:</strong>
+                        {{ usuario.nombre }}
+                    </p>
+
+                    <p>
+                        <strong>Apellido:</strong>
+                        {{ usuario.apellido }}
+                    </p>
+
+                    <p>
+                        <strong>E-mail:</strong>
+                        {{ usuario.email }}
+                    </p>
+
+                    <p>
+                        <strong>Fecha de nacimiento:</strong>
+                        {{ usuario.fecha_nacimiento.strftime('%d/%m/%Y') }}
+                    </p>
+
+                    <p>
+                        <strong>Ciudad:</strong>
+                        {{ usuario.ciudad }}
+                    </p>
+
+                    <p>
+                        <strong>Género:</strong>
+                        {{ usuario.genero }}
+                    </p>
+
+                    <p>
+                        <strong>Intereses:</strong>
+                        {{ usuario.intereses }}
+                    </p>
+                </div>
+
+                <hr>
+
+                <a href="{{ url_for('usuarios.logout') }}" class="btn btn-danger">
+                    Cerrar sesión
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

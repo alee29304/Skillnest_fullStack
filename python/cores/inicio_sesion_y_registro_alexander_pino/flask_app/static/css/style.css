@@ -1,0 +1,141 @@
+body {
+    background-color: #181818;
+    color: #f1f1f1;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1100px;
+}
+
+h1 {
+    color: #ff3b3b;
+    font-weight: bold;
+}
+
+h2 {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+h4 {
+    color: #ff4d4d;
+}
+
+.text-muted {
+    color: #b8b8b8 !important;
+}
+
+.card {
+    background-color: #242424;
+    border: 1px solid #3a3a3a;
+    border-radius: 12px;
+    color: #f1f1f1;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.form-label {
+    color: #eeeeee;
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    background-color: #303030;
+    border: 1px solid #555555;
+    color: #ffffff;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #303030;
+    color: #ffffff;
+    border-color: #ff3b3b;
+    box-shadow: 0 0 0 0.2rem rgba(255, 59, 59, 0.25);
+}
+
+.form-control::placeholder {
+    color: #999999;
+}
+
+.form-select option {
+    background-color: #303030;
+    color: #ffffff;
+}
+
+.form-check-label {
+    color: #dddddd;
+}
+
+.form-check-input {
+    background-color: #303030;
+    border-color: #666666;
+}
+
+.form-check-input:checked {
+    background-color: #e63939;
+    border-color: #e63939;
+}
+
+.form-text {
+    color: #999999;
+}
+
+.btn-primary {
+    background-color: #e63939;
+    border-color: #e63939;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #c92f2f;
+    border-color: #c92f2f;
+}
+
+.btn-success {
+    background-color: #e63939;
+    border-color: #e63939;
+    font-weight: bold;
+}
+
+.btn-success:hover {
+    background-color: #c92f2f;
+    border-color: #c92f2f;
+}
+
+.btn-danger {
+    background-color: #b52b2b;
+    border-color: #b52b2b;
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background-color: #922323;
+    border-color: #922323;
+}
+
+.alert-danger {
+    background-color: #3a1d1d;
+    border: 1px solid #8f3030;
+    color: #ffb3b3;
+}
+
+hr {
+    border-color: #4a4a4a;
+}
+
+.shadow {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35) !important;
+}
+
+a {
+    color: #ff4d4d;
+}
+
+a:hover {
+    color: #ff7777;
+}
