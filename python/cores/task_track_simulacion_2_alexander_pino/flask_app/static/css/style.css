@@ -1,0 +1,154 @@
+/* ==========================================
+   TaskTrack - Estilos Generales
+   ========================================== */
+
+:root {
+    --bg-main: #f4f6f9;
+    --dark-primary: #212529;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --border-radius: 8px;
+}
+
+body {
+    background-color: var(--bg-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+}
+
+/* Tarjetas (Cards) y Contenedores */
+.card {
+    border: 1px solid #e3e6f0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    background-color: #ffffff;
+}
+
+.card-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e3e6f0;
+    font-weight: 600;
+}
+
+/* ==========================================
+   Tablas (Vista de Tareas y Categorías)
+   ========================================== */
+
+.table {
+    vertical-align: middle;
+    background-color: #ffffff;
+}
+
+.table thead th {
+    background-color: #f8f9fc;
+    border-bottom: 2px solid #e3e6f0;
+    color: #4e73df;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f3f9;
+}
+
+/* ==========================================
+   Badges para Estados y Prioridades
+   ========================================== */
+
+/* Prioridades */
+.badge-prioridad-alta {
+    background-color: #ea868f;
+    color: #842029;
+}
+
+.badge-prioridad-media {
+    background-color: #ffda6a;
+    color: #664d03;
+}
+
+.badge-prioridad-baja {
+    background-color: #a3cfbb;
+    color: #0f5132;
+}
+
+/* Estados de Tarea */
+.badge-estado-pendiente {
+    background-color: #fff3cd;
+    color: #664d03;
+    border: 1px solid #ffe69c;
+}
+
+.badge-estado-progreso {
+    background-color: #cff4fc;
+    color: #055160;
+    border: 1px solid #9eeaf9;
+}
+
+.badge-estado-completada {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #a3cfbb;
+}
+
+/* ==========================================
+   Formularios y Botones
+   ========================================== */
+
+.form-control,
+.form-select {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    padding: 0.55rem 0.75rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 0.45rem 1rem;
+}
+
+.btn-primary {
+    background-color: #2b303a;
+    border-color: #2b303a;
+}
+
+.btn-primary:hover {
+    background-color: #1a1e24;
+    border-color: #1a1e24;
+}
+
+/* ==========================================
+   Detalle de Tarea y Cajas de Resumen
+   ========================================== */
+
+.summary-card {
+    background-color: #ffffff;
+    border-left: 4px solid #4e73df;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #5a5c69;
+    width: 140px;
+    display: inline-block;
+}

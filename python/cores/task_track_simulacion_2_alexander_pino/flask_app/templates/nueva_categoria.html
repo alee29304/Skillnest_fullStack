@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block titulo %}TaskTrack - Nueva Categoría{% endblock %}
+
+{% block contenido %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4 shadow-sm">
+            <h3 class="mb-3">Nueva Categoría</h3>
+
+            {% with messages = get_flashed_messages(category_filter=["categoria"]) %}
+            {% if messages %}
+            <div class="alert alert-danger">
+                {% for msg in messages %}<p class="m-0">{{ msg }}</p>{% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <form action="/categorias/crear" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Nombre:</label>
+                    <input type="text" name="nombre" class="form-control" required>
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-dark">Guardar</button>
+                    <a href="/categorias" class="btn btn-outline-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

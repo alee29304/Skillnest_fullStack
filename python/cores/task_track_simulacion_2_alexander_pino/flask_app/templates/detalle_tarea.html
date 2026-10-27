@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Detalle de Tarea - {{ tarea.titulo }}{% endblock %}
+
+{% block contenido %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title mb-0">{{ tarea.titulo }}</h3>
+                <span class="badge 
+                    {% if tarea.prioridad == 'Alta' %}bg-danger
+                    {% elif tarea.prioridad == 'Media' %}bg-warning text-dark
+                    {% else %}bg-secondary{% endif %}">
+                    Prioridad: {{ tarea.prioridad }}
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <p><strong>Categoría:</strong> {{ tarea.categoria_nombre }}</p>
+                        <p><strong>Estado:</strong>
+                            <span class="badge 
+                                {% if tarea.estado == 'Completada' %}bg-success
+                                {% elif tarea.estado == 'En progreso' %}bg-info text-dark
+                                {% else %}bg-warning text-dark{% endif %}">
+                                {{ tarea.estado }}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Fecha Límite:</strong> {{ tarea.fecha_limite }}</p>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <h5>Descripción</h5>
+                    <p class="card-text bg-light p-3 rounded">{{ tarea.descripcion }}</p>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="/tareas" class="btn btn-outline-secondary">Volver a Tareas</a>
+
+                    <div class="btn-group">
+                        {% if tarea.estado != 'Completada' %}
+                        <form action="/tareas/{{ tarea.id }}/completar" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-success me-2">Marcar como Completada</button>
+                        </form>
+                        {% endif %}
+                        <a href="/tareas/{{ tarea.id }}/editar" class="btn btn-warning me-2">Editar</a>
+                        <a href="/tareas/{{ tarea.id }}/eliminar" class="btn btn-danger"
+                            onclick="return confirm('¿Seguro que deseas eliminar esta tarea?')">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
